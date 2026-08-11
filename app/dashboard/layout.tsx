@@ -28,7 +28,12 @@ import {
   Settings,
   Award,
   Clock,
-  Gift
+  Gift,
+  Building2,
+  ClipboardList,
+  FileText,
+  TrendingUp,
+  Activity
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
@@ -256,7 +261,7 @@ function SidebarContent({
   isMobile: boolean
   displayName: string
 }) {
-  // Navigation items
+  // Navigation items - Daily Tools
   const dailyTools = [
     { name: 'What\'s New', href: '/dashboard/whats-new', icon: Gift },
     { name: 'Home', href: '/dashboard/home', icon: Home },
@@ -264,13 +269,16 @@ function SidebarContent({
     { name: 'Dial Tracker', href: '/dashboard/dial-tracker', icon: Clock },
   ]
 
+  // Navigation items - Clients & Sales (with Clients added)
   const clientsSales = [
+    { name: 'Clients', href: '/dashboard/clients', icon: Building2 },
     { name: 'Phone Script', href: '/dashboard/phone-script', icon: Phone },
     { name: 'Leaderboard', href: '/dashboard/leaderboard', icon: Trophy },
     { name: 'Deposits', href: '/dashboard/deposits', icon: Wallet },
     { name: 'Leads', href: '/dashboard/leads', icon: Users },
   ]
 
+  // Navigation items - Insights
   const insights = [
     { name: 'Analytics', href: '/dashboard/analytics', icon: BarChart3 },
     { name: 'Badges', href: '/dashboard/badges', icon: Award },

@@ -32,6 +32,9 @@ export interface DashboardStats {
   totalBadges: number
   prestigeLevel: number
   progressPercentage: number
+  rank: number          // Added missing property
+  totalRank: number      // Added missing property
+  rankChange: number     // Added missing property
   weeklyData: WeeklyData[]
 }
 
@@ -69,5 +72,16 @@ export interface Deposit {
   type: string
   status: 'pending' | 'completed' | 'failed'
   description: string
+  created_at: string
+}
+
+export interface CallRecord {
+  id: string
+  user_id: string
+  lead_id: string
+  duration: number
+  outcome: string
+  notes: string
+  recorded_at: string
   created_at: string
 }
