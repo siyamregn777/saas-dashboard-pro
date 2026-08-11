@@ -19,22 +19,25 @@ export interface Profile {
   updated_at?: string
 }
 
-export interface UserStats {
-  id: string
-  user_id: string
-  total_calls: number
-  total_deposits: number
-  total_leads: number
-  hustle_score: number
-  updated_at: string
+export interface DashboardStats {
+  apSoldThisWeek: number
+  salesThisWeek: number
+  hoursWorked: number
+  totalDeposits: number
+  depositsThisWeek: number
+  depositsThisMonth: number
+  dialsThisWeek: number
+  hustleScore: number
+  goalAmount: number
+  totalBadges: number
+  prestigeLevel: number
+  progressPercentage: number
+  weeklyData: WeeklyData[]
 }
 
-export interface Activity {
-  id: string
-  user_id: string
-  action: string
-  details: Record<string, unknown>
-  created_at: string
+export interface WeeklyData {
+  day: string
+  value: number
 }
 
 export interface Badge {
@@ -42,7 +45,6 @@ export interface Badge {
   name: string
   description: string
   icon: string
-  required_score: number
   earned: boolean
   earned_at?: string
 }
@@ -68,48 +70,4 @@ export interface Deposit {
   status: 'pending' | 'completed' | 'failed'
   description: string
   created_at: string
-}
-
-export interface CallRecord {
-  id: string
-  user_id: string
-  lead_id: string
-  duration: number
-  outcome: string
-  notes: string
-  recorded_at: string
-  created_at: string
-}
-
-export interface DashboardStats {
-  apSoldThisWeek: number
-  salesThisWeek: number
-  hoursWorked: number
-  totalDeposits: number
-  totalLeads: number
-  hotLeads: number
-  coldLeads: number
-  conversionRate: number
-  totalBadges: number
-  prestigeLevel: number
-  progressPercentage: number
-  dialsThisWeek: number
-  leaderboardRank: number
-  topPerformers: TopPerformer[]
-  recentActivity: RecentActivity[]
-}
-
-export interface TopPerformer {
-  rank: number
-  name: string
-  revenue: number
-  growth: number
-}
-
-export interface RecentActivity {
-  id: string
-  user: string
-  action: string
-  time: string
-  avatar: string
 }

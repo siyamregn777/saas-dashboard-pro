@@ -31,26 +31,41 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // Allow access to login, signup, and auth callback pages without authentication
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/signup') &&
-    !request.nextUrl.pathname.startsWith('/auth')
-  ) {
+  // Define public routes that don't require authentication
+  const publicRoutes = [
+    '/', 
+    '/login', 
+    '/signup', 
+    '/auth/callback',
+    '/auth/auth-code-error'
+  ]
+  
+  const pathname = request.nextUrl.pathname
+  const isPublicRoute = publicRoutes.some(route => 
+    pathname === route || 
+    pathname.startsWith('/auth/') ||
+    pathname.startsWith('/_next/') ||
+    pathname.includes('.') // static files
+  )
+
+  // If user is logged in and tries to access login/signup, redirect to dashboard
+  if (user && (pathname === '/login' || pathname === '/signup')) {
     const url = request.nextUrl.clone()
-    url.pathname = '/login'
+    url.pathname = '/dashboard/home'
     return NextResponse.redirect(url)
   }
 
-  // If user is logged in and tries to access login/signup, redirect to dashboard
-  if (
-    user &&
-    (request.nextUrl.pathname.startsWith('/login') ||
-     request.nextUrl.pathname.startsWith('/signup'))
-  ) {
+  // If user is logged in and tries to access home page, redirect to dashboard
+  if (user && pathname === '/') {
     const url = request.nextUrl.clone()
-    url.pathname = '/dashboard'
+    url.pathname = '/dashboard/home'
+    return NextResponse.redirect(url)
+  }
+
+  // If user is not logged in and tries to access protected routes, redirect to login
+  if (!user && !isPublicRoute) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
@@ -59,6 +74,13 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public files
+     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
