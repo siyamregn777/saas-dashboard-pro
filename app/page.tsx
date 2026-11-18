@@ -15,7 +15,8 @@ import {
   Trophy,
   Wallet,
   Target,
-  ArrowRight
+  ArrowRight,
+  Star
 } from 'lucide-react'
 
 export default function HomePage() {
@@ -168,15 +169,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonial/Quote Section */}
-      <section className="py-16 bg-yellow-50 dark:bg-yellow-900/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="text-4xl text-yellow-400 mb-4">&quot;</div>
-          <blockquote className="text-xl md:text-2xl font-medium text-gray-900 dark:text-white">
-            I was happy when I made my first $100,000 from selling insurance. But I was over the damn moon when I started paying my staff six-figure salaries.
-          </blockquote>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 font-semibold">— John Wetmore</p>
-          <p className="text-sm text-gray-500 dark:text-gray-500">Insurance Sales Professional</p>
+      {/* Testimonials Section */}
+      <section className="py-20 bg-yellow-50 dark:bg-yellow-900/10 border-y border-yellow-100 dark:border-yellow-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-wider text-yellow-700 dark:text-yellow-400">Testimonials</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">Built for the people who make it happen</h2>
+            <p className="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl mx-auto">A little perspective from the sales floor.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: 'I was happy when I made my first $100,000 from selling insurance. But I was over the damn moon when I started paying my staff six-figure salaries.',
+                name: 'John Wetmore',
+                role: 'Insurance Sales Professional',
+                initials: 'JW',
+              },
+              {
+                quote: 'When you keep showing up, learning from every conversation, and supporting your team, the results follow.',
+                name: 'Sales Team Leader',
+                role: 'Sales Leadership',
+                initials: 'ST',
+              },
+              {
+                quote: 'The best progress comes from making the next call, following up, and staying focused on the goal.',
+                name: 'Independent Agent',
+                role: 'Insurance Sales',
+                initials: 'IA',
+              },
+            ].map((testimonial) => (
+              <figure key={testimonial.name} className="flex flex-col rounded-2xl border border-yellow-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-6 shadow-sm">
+                <div className="flex gap-1 text-yellow-500" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }, (_, index) => <Star key={index} className="h-4 w-4 fill-current" aria-hidden="true" />)}
+                </div>
+                <blockquote className="flex-1 mt-5 text-gray-700 dark:text-gray-300 leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</blockquote>
+                <figcaption className="mt-6 pt-5 border-t border-gray-100 dark:border-gray-700 flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-300 flex items-center justify-center text-sm font-bold" aria-hidden="true">{testimonial.initials}</div>
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
