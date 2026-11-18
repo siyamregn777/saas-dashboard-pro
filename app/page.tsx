@@ -70,7 +70,7 @@ export default function HomePage() {
                 Sign In
               </Link>
               <Link
-                href="/signup"
+                href="/signpu"
                 className="px-4 py-2 text-sm font-medium bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-lg transition-colors"
               >
                 Get Started
@@ -222,7 +222,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Tracking?</h2>
           <p className="text-gray-400 mb-8">Join thousands of sales professionals already using SalesTracker.</p>
           <Link
-            href="/signup"
+            href="/signpu"
             className="px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
           >
             Get Started Now
