@@ -104,7 +104,7 @@ export default function HomePage() {
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
-                href="/logni"
+                href="/login"
                 className="px-8 py-3 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-colors"
               >
                 Sign In
