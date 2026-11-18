@@ -43,6 +43,7 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   const isPublicRoute = publicRoutes.some(route => 
     pathname === route || 
+    pathname.startsWith('/api/') ||
     pathname.startsWith('/auth/') ||
     pathname.startsWith('/_next/') ||
     pathname.includes('.') // static files
