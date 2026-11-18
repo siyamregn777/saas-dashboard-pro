@@ -70,7 +70,7 @@ export default function HomePage() {
                 Sign In
               </Link>
               <Link
-                href="/signup"
+                href="/signpu"
                 className="px-4 py-2 text-sm font-medium bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-lg transition-colors"
               >
                 Get Started
