@@ -49,27 +49,27 @@ export default function WhatsNewPage() {
 
   const getBadgeStyles = (color: string) => {
     const styles = {
-      blue: 'bg-blue-100 text-blue-700',
-      green: 'bg-green-100 text-green-700',
-      purple: 'bg-purple-100 text-purple-700',
-      yellow: 'bg-yellow-100 text-yellow-700',
+      blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-200',
+      green: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-200',
+      purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-200',
+      yellow: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-200',
     }
     return styles[color as keyof typeof styles] || styles.blue
   }
 
   const getIconBg = (color: string) => {
     const styles = {
-      blue: 'bg-blue-50 text-blue-600',
-      green: 'bg-green-50 text-green-600',
-      purple: 'bg-purple-50 text-purple-600',
-      yellow: 'bg-yellow-50 text-yellow-600',
+      blue: 'bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-300',
+      green: 'bg-green-50 text-green-600 dark:bg-green-900/40 dark:text-green-300',
+      purple: 'bg-purple-50 text-purple-600 dark:bg-purple-900/40 dark:text-purple-300',
+      yellow: 'bg-yellow-50 text-yellow-600 dark:bg-yellow-900/40 dark:text-yellow-300',
     }
     return styles[color as keyof typeof styles] || styles.blue
   }
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8 text-white">
           <div className="flex items-center justify-between">
@@ -84,7 +84,8 @@ export default function WhatsNewPage() {
             </div>
             <Link 
               href="/dashboard" 
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+              aria-label="Close What’s New"
+              className="rounded-lg p-2 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
               <X className="h-5 w-5" />
             </Link>
@@ -98,7 +99,7 @@ export default function WhatsNewPage() {
             return (
               <div 
                 key={update.id}
-                className="group border border-gray-100 rounded-xl p-5 hover:shadow-md transition-all duration-200 hover:border-gray-200"
+                className="group rounded-xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:border-gray-300 hover:shadow-md dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600"
               >
                 <div className="flex items-start gap-4">
                   <div className={`p-3 rounded-lg ${getIconBg(update.color)} flex-shrink-0`}>
@@ -106,20 +107,20 @@ export default function WhatsNewPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 flex-wrap mb-1">
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                         {update.title}
                       </h3>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${getBadgeStyles(update.badgeColor)}`}>
                         {update.status}
                       </span>
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
                         {update.date}
                       </span>
                     </div>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
                       {update.description}
                     </p>
-                    <button className="mt-3 text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                    <button className="mt-3 flex items-center gap-1 text-sm font-medium text-blue-600 transition-all hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:text-blue-400 dark:hover:text-blue-300 dark:focus-visible:ring-offset-gray-800 group-hover:gap-2">
                       Learn more
                       <ChevronRight className="h-4 w-4" />
                     </button>
@@ -130,14 +131,14 @@ export default function WhatsNewPage() {
           })}
 
           {/* Bottom CTA */}
-          <div className="bg-gray-50 rounded-xl p-4 text-center border border-gray-200">
-            <p className="text-sm text-gray-600">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-center dark:border-gray-700 dark:bg-gray-900/60">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               Want to stay updated? Follow our{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+              <a href="#" className="font-medium text-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
                 changelog
               </a>
               {' '}or join our{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+              <a href="#" className="font-medium text-blue-600 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
                 community
               </a>
               .
