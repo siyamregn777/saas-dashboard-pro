@@ -16,7 +16,10 @@ import {
   Wallet,
   Target,
   ArrowRight,
-  Star
+  Star,
+  UserPlus,
+  ClipboardList,
+  TrendingUp
 } from 'lucide-react'
 
 export default function HomePage() {
@@ -165,6 +168,50 @@ export default function HomePage() {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Badge Collection</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-2">Earn badges and achievements as you hit your milestones.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold uppercase tracking-wider text-yellow-700 dark:text-yellow-400">How It Works</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-2">Get Up and Running in Minutes</h2>
+            <p className="text-gray-600 dark:text-gray-400 mt-3 max-w-2xl mx-auto">Three simple steps from sign-up to your first tracked sale.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                icon: UserPlus,
+                title: 'Create Your Account',
+                description: 'Sign up for free in seconds — no credit card required. Your workspace is ready instantly.',
+              },
+              {
+                step: '02',
+                icon: ClipboardList,
+                title: 'Log Your Activity',
+                description: 'Record calls, leads, and deposits as you work. Everything is organized in one place.',
+              },
+              {
+                step: '03',
+                icon: TrendingUp,
+                title: 'Track & Improve',
+                description: 'Watch your stats, climb the leaderboard, and earn badges as you hit your goals.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-8 shadow-sm">
+                <span className="absolute -top-4 left-8 inline-flex h-8 items-center rounded-full bg-yellow-400 px-3 text-sm font-bold text-gray-900">
+                  {item.step}
+                </span>
+                <div className="w-14 h-14 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-5">
+                  <item.icon className="h-7 w-7 text-yellow-600 dark:text-yellow-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mt-2">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
